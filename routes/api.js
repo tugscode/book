@@ -30,8 +30,7 @@ router.get("/sort", (req, res) => {
 
 //номын сан дахь бүх зохиолчдын нэрийг авах
 router.get("/names" , (req ,res)=>{
-   let names = []
-   books.map((j)=>{names += j.author})
+   names = books.map((j)=>{return j.author})
    res.send(names)
 })
 
@@ -80,8 +79,12 @@ router.get("/minpages" , (req , res)=>{
 
 //Хэвлэлийн компаниудыг жагсаан дор бүрнээ хэдэн ном бидэнд нийлүүлсэн талаарх мэдээлэл авах
 router.get("/company" , (req , res)=>{
-    
-    res.send
+    publishers = books.map(book=>{
+        return book.publisher
+    })
+    var count = {}
+    publishers.forEach((i) => {count[i] = (count[i]||0) +1})
+    res.send(count)
 })
 
 module.exports = router;
