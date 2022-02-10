@@ -89,8 +89,18 @@ router.get("/company" , (req , res)=>{
 
 //book card аас card устгах
 
-router.get("/deletebook" ,(req , res)=>{
-    isbn = books.map((j)=>{return j.isbn})
+router.get("/deletebook/:isbn" ,(req , res)=>{
+    isbn_s = req.params.isbn;
+    let isbn= books.filter(user => user.isbn !== isbn_s)
+    for (let [i, user] of books.entries()){
+        if(user.isbn === isbn_s){
+            books.splice(i , 1)
+        }
+    }
+
+    fs.writeFileSync(__dirname)
+
+
     res.send(isbn)
 })
 module.exports = router;
