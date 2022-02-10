@@ -1,0 +1,38 @@
+body{
+    background-color: #1e1e1e !important;
+}
+.btnColor{
+    background-color: #63b634 !important;
+    color: white !important;
+}
+.btnColor1{
+    background-color: #6290C3 !important;
+    color: white !important;
+}
+h1{
+    color: white;
+}
+.form-label{
+    color: #f7f7f2 !important;
+}
+input, select, textarea{
+    background-color: #f7f7f2  !important;
+    color: #1e1e1e !important;
+}
+.card{
+    background-color: #f7f7f2 !important;
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-body{
+    height: calc(100% - 350px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-img-top{
+    height: 350px;
+}

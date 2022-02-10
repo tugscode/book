@@ -52,7 +52,7 @@ router.get("/book/:isbn" , (req ,res)=>{
 router.get("/search" , (req ,res)=>{
     title = req.query.title
     result = books.filter(book=>{
-        return book.title.includes(title)
+        return book.title.toLocaleLowerCase().includes(title)
     })
     res.send(result)
 })
@@ -87,4 +87,10 @@ router.get("/company" , (req , res)=>{
     res.send(count)
 })
 
+//book card аас card устгах
+
+router.get("/deletebook" ,(req , res)=>{
+    isbn = books.map((j)=>{return j.isbn})
+    res.send(isbn)
+})
 module.exports = router;
