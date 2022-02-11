@@ -2,6 +2,7 @@ const express = require("express");
 const { json } = require("express/lib/response");
 const res = require("express/lib/response");
 const fs = require("fs");
+const path = require("path");
 const app = express();
 const router = express.Router();
 const { books } = require("../book.json");
@@ -91,16 +92,15 @@ router.get("/company" , (req , res)=>{
 
 router.get("/deletebook/:isbn" ,(req , res)=>{
     isbn_s = req.params.isbn;
-    let isbn= books.filter(user => user.isbn !== isbn_s)
+    let updated_books= books.filter(user => user.isbn !== isbn_s)
     for (let [i, user] of books.entries()){
         if(user.isbn === isbn_s){
             books.splice(i , 1)
         }
     }
 
-    fs.writeFileSync(__dirname)
-
-
-    res.send(isbn)
+    let data = {"books": isbn}
+    fs.writeFileSync(path.join(__dirname , "../updated_book.json"),JSON.stringify(data))
+    res.send("Book Deleted")
 })
 module.exports = router;

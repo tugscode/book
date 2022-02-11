@@ -7,7 +7,7 @@ function deleteHandler(e){
     fetch(`http://localhost:3002/api/deletebook/${id}`)
     .then(response => response.text())
     .then(data=>{
-        alert(data)
-        location.reload
+        alert("Press OK to delete")
+        window.location.reload()
     })
 }
