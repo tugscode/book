@@ -11,3 +11,16 @@ function deleteHandler(e){
         window.location.reload()
     })
 }
+
+// // reset books list to default list
+// document.getElementById("reset-btn").addEventListener('click', (event)=>{
+//     event.preventDefault();
+//     fetch('http://localhost:3002/reset')
+//     .then(response =>{
+//         return response
+//     })
+//     .then(response => {
+//         alert("Books list is set to default")
+//         location.reload()
+//     })
+// })

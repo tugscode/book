@@ -17,4 +17,14 @@ app.get("/" , (req, res)=>{
     res.render("index")
 })
 
+app.get("/reset", async (req,res)=>{
+    await fs.writeFile(path.join(__dirname, "../book.json"), JSON.stringify(books_default), async err =>{
+    if(err){
+      res.send("Error occured white updating book.json.: " + err)
+    }
+     res.redirect('/')
+  })
+  
+})
+
 module.exports = app

@@ -90,17 +90,27 @@ router.get("/company" , (req , res)=>{
 
 //book card аас card устгах
 
-router.get("/deletebook/:isbn" ,(req , res)=>{
-    isbn_s = req.params.isbn;
-    let updated_books= books.filter(user => user.isbn !== isbn_s)
-    for (let [i, user] of books.entries()){
-        if(user.isbn === isbn_s){
-            books.splice(i , 1)
-        }
-    }
-
-    let data = {"books": isbn}
-    fs.writeFileSync(path.join(__dirname , "../updated_book.json"),JSON.stringify(data))
-    res.send("Book Deleted")
+router.get("/deletebook/:isbn", (req,res)=>{
+    let isbn = req.params.isbn
+    updated_books = books.filter( book =>{
+        return book.isbn !== isbn
+    })
+    let data = {"books": updated_books}
+    fs.writeFileSync(path.join(__dirname, "../book.json"), JSON.stringify(data))
+    res.send("Book deleted")
 })
+
+// .toISOString()
+//book.json deer nom nemeh
+router.post('/addbook', (req, res)=>{
+    book =  req.body
+    book.published = (new Date(book.published))
+    book.pages = (book.pages);
+    console.log(books.length)
+    books.push(book)
+    console.log(books.length)
+    fs.writeFileSync(path.join(__dirname, "../book.json"), JSON.stringify({"books": books}))
+    res.send({"message": "book added"})
+})
+
 module.exports = router;
